@@ -2,7 +2,6 @@ package com.example.springsecurity2.service;
 
 import com.example.springsecurity2.model.Role;
 
-import java.util.List;
 import java.util.Set;
 
 public interface RoleService {

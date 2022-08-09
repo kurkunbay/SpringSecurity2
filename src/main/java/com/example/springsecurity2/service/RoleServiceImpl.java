@@ -4,8 +4,8 @@ import com.example.springsecurity2.DAO.RoleDAO;
 import com.example.springsecurity2.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -28,6 +28,7 @@ public class RoleServiceImpl implements RoleService {
         return roleDAO.findRole(role);
     }
 
+    @Transactional
     @Override
     public void deleteRole(Role role) {
         roleDAO.deleteRole(role);
