@@ -30,6 +30,10 @@ public class Init {
         user.setUsername("user");
         user.setPassword("$2a$12$sn9KvEVkIANLssoCvEnh0.XqIxsE3BwaLt5qSltxaOj11eQoLCj8i"); //Password: user
 
+        User user2 = new User();
+        user2.setUsername("user2");
+        user2.setPassword("$2a$12$sn9KvEVkIANLssoCvEnh0.XqIxsE3BwaLt5qSltxaOj11eQoLCj8i"); //Password: user
+
         Role role = new Role();
         role.setName("ROLE_ADMIN");
         Role role2 = new Role();
@@ -37,10 +41,12 @@ public class Init {
 
         admin.setRoles(Collections.singleton(role));
         user.setRoles(Collections.singleton(role2));
+        user2.setRoles(Collections.singleton(role2));
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         entityManager.persist(user);
+        entityManager.persist(user2);
         entityManager.persist(admin);
         entityManager.persist(role);
         entityManager.persist(role2);

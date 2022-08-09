@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -18,32 +19,22 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void createRole(Role role) {
-        roleDAO.save(role);
+    public void addRole(Role role) {
+        roleDAO.addRole(role);
+    }
+
+    @Override
+    public Role findRole(String role) {
+        return roleDAO.findRole(role);
     }
 
     @Override
     public void deleteRole(Role role) {
-        roleDAO.delete(role);
+        roleDAO.deleteRole(role);
     }
 
     @Override
-    public void updateRole(Role role) {
-        roleDAO.save(role);
-    }
-
-    @Override
-    public Role getRoleById(Long id) {
-        return roleDAO.findById(id).get();
-    }
-
-    @Override
-    public List<Role> getAllRoles() {
-        return (List<Role>) roleDAO.findAll();
-    }
-
-    @Override
-    public Role getRoleByName(String name) {
-        return roleDAO.findByName(name);
+    public Set<Role> getAllRoles() {
+        return roleDAO.getAllRoles();
     }
 }

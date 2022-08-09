@@ -11,36 +11,46 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
     private final UserDAO userDAO;
-    private final RoleDAO roleDAO;
 
     @Autowired
-    public UserServiceImpl(UserDAO userDAO, RoleDAO roleDAO) {
+    public UserServiceImpl(UserDAO userDAO) {
         this.userDAO = userDAO;
-        this.roleDAO = roleDAO;
     }
 
+    @Override
+    public List<User> getListUsers() {
+        return userDAO.getListOfUsers();
+    }
+
+    @Override
     public User findById(Long id) {
-        return userDAO.getOne(id);
+        return userDAO.findById(id);
     }
 
-    public List<User> findAll() {
-        return userDAO.findAll();
-    }
-
-    public User saveUser(User user) {
-        return userDAO.save(user);
-    }
-
-    public void deleteById(Long id) {
+    @Override
+    public void deleteUserById(Long id) {
         userDAO.deleteById(id);
     }
 
     @Override
-    public User findByUsername(String name) {
-        return userDAO.findByUsername(name);
+    public void updateWithRole(User user) {
+        userDAO.update(user);
     }
 
+    @Override
+    public User findByUserName(String username) {
+        return userDAO.findByUserName(username);
+    }
+
+    @Override
+    public void addUser(User user) {
+        userDAO.addUser(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userDAO.update(user);
+    }
 }
 
